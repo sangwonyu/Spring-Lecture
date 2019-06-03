@@ -13,7 +13,7 @@
 	${path }
 		<a href = "${path}/ ">main</a>
 		<a href = "${path}/gugu.do">구구단</a>
-		<a href =  "${path}/test.do">테스트</a>
+		<a href =  "${path}/test.do">테스트</a> <!-- 직접 test.jsp로 보내는 것이 불가능, 따라서 controller에 보내고 다시test.jsp로 보냄 -->
 		<a href =  "${path}/member/list.do}">회원관리</a>
 	</div>
 	1
