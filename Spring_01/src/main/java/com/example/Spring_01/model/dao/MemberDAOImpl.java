@@ -1,6 +1,8 @@
 package com.example.Spring_01.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -25,33 +27,36 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public void insertMember(MemberDTO vo) {
-		// TODO Auto-generated method stub
-		
+		sqlSession.insert("member.insertMember",vo);
 	}
 
 	@Override
 	public MemberDTO viewMember(String userid) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return sqlSession.selectOne("member.viewMember", userid);
 	}
 
 	@Override
 	public void deleteMember(String userid) {
-		// TODO Auto-generated method stub
-		
+		sqlSession.delete("member.deleteMember",userid);
 	}
 
 	@Override
 	public void updateMember(MemberDTO vo) {
-		// TODO Auto-generated method stub
-		
+		sqlSession.update("member.updateMember",vo);
 	}
 
 	@Override
 	public boolean checkPw(String userid, String passwd) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean result = false;
+		Map<String,String> map = new HashMap<String, String>();
+		map.put("userid", userid);
+		map.put("passwd", passwd);
+		int count = sqlSession.selectOne("member.checkPw",map);
+		if(count==1) {
+			result=true;
+		}
+		return result;
 	}
-	
 	
 }

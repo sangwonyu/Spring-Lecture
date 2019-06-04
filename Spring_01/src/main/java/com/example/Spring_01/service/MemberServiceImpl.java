@@ -22,27 +22,24 @@ public class MemberServiceImpl implements MemberService {
 	}
 	@Override
 	public void insertMember(MemberDTO vo) {
-		// TODO Auto-generated method stub
-		
+		memberDao.insertMember(vo);
 	}
 	@Override
 	public MemberDTO viewMember(String userid) {
-		// TODO Auto-generated method stub
-		return null;
+		return memberDao.viewMember(userid);
 	}
 	@Override
 	public void deleteMember(String userid) {
-		// TODO Auto-generated method stub
-		
+		memberDao.deleteMember(userid);
 	}
 	@Override
 	public void updateMember(MemberDTO vo) {
+		memberDao.updateMember(vo);
 		// TODO Auto-generated method stub
 		
 	}
 	@Override
 	public boolean checkPw(String userid, String passwd) {
-		// TODO Auto-generated method stub
-		return false;
+		return memberDao.checkPw(userid,passwd);
 	}
 }

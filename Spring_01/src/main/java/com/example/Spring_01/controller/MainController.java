@@ -21,6 +21,7 @@ public class MainController {
 	public String main(Model model) {
 		// Model : 데이터에 담을 그릇 역할, map(키, 값)
 		// model.addAttribute("변수","값")
+		System.out.println("controller check 24 main");
 		model.addAttribute("message", "저의 홈페이지 입니다."); // 키와 값
 		return "main";
 	}

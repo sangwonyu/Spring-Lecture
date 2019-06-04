@@ -6,12 +6,36 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
 <mapper namespace="member">
 	<select id="memberList" resultType="memberDto"> <!-- mybatis 매퍼 -->
-	
 	select * from member
 	order by name
+	</select>
 	
+	<insert id="insertMember"> <!-- 돌아오는값이 없으니까 resultType은 없어도됨 -->
+		insert into member (userid,passwd,name,email) values
+		(#{userid}, #{passwd}, #{name}, #{email})
+	</insert>
+	
+	<select id="viewMember" resultType="memberDto">
+		select * from member
+		where userid=#{userid}
+	</select>
+	
+	<update id="updateMember" >
+		update member set passwd=#{passwd}, name=#{name}, email=#{email} where userid = #{userid}
+	</update>
+	
+	<delete id="deleteMember">
+		delete from member
+		where userid=#{userid}	
+	</delete>
+	
+	<!-- 비밀번호체크 -->
+	<select id="checkPw" resultType="int">
+		select count(*) from member
+		where userid=#{userid} and passwd=#{passwd}
 	</select>
 </mapper>
+
 
 
 
