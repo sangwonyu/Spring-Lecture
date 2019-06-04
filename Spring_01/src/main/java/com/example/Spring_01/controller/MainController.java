@@ -26,6 +26,12 @@ public class MainController {
 		return "main";
 	}
 	
+	@RequestMapping("/home") //루트로 매핑
+	public String login(Model model) {
+		System.out.println("controller check 31 main");
+		return "home";
+	}
+	
 	@RequestMapping(value="gugu.do", method=RequestMethod.GET)
 	public String gugu(int dan, Model model) {
 		String result="";
