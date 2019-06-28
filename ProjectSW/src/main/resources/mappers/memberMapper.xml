@@ -10,7 +10,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from member
 		where userid=#{userid} and passwd=#{passwd}
 	</select>
+	
 	<select id="memberList" resultType="memberDto">
 		select * from member
 	</select>
+	
+	<select id="memberPick" resultType="int">
+		select count(*) from member where userid=#{userid}
+	</select>
+	
+	<insert id="insertId">
+		insert into member (userid,passwd,name,inception) values(#{userid},#{passwd},#{name},#{inception})
+	</insert>
+	
 </mapper>

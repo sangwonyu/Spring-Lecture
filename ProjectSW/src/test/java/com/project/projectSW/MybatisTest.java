@@ -36,7 +36,7 @@ public class MybatisTest {
 		//mybatis 실행을 위한 SqlSession 객체 생성
 		try(SqlSession sqlSession = sqlFactory.openSession()){
 			logger.info("sqlSession : " + sqlSession);
-			logger.info("myvatis 연결 성공");
+			logger.info("mybatis 연결 성공");
 		}catch (Exception e) {
 			e.printStackTrace();
 		}

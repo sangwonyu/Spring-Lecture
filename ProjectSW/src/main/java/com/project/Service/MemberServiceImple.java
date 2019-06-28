@@ -22,9 +22,9 @@ public class MemberServiceImple implements MemberService {
 	}
 
 	@Override
-	public void insertMember(MemberDTO vo) {
-		// TODO Auto-generated method stub
-
+	public int insertMember(MemberDTO vo) {
+		int idCheck = memberDao.insertMember(vo);
+		return idCheck;
 	}
 
 	@Override

@@ -21,9 +21,15 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public void insertMember(MemberDTO vo) {
-		// TODO Auto-generated method stub
-
+	public int insertMember(MemberDTO vo) {
+		String id=vo.getUserid();
+		System.out.println("idCheck(MemberDAOImple) : " + id);
+		int idCheck = sqlSession.selectOne("board.memberPick",id);
+		System.out.println("idCheckCheck : " + idCheck);
+		if(idCheck==0) {
+			sqlSession.insert("board.insertId",vo);
+		}
+		return idCheck;
 	}
 
 	@Override
@@ -50,8 +56,11 @@ public class MemberDAOImpl implements MemberDAO {
 		Map<String,String> map = new HashMap<String, String>();
 		map.put("userid", userid);
 		map.put("passwd", passwd);
+		System.out.println(userid + " , "+ passwd);
 		int count = sqlSession.selectOne("board.checkPw",map);
+		System.out.println("countCheck : " + count );
 		if(count==1) {
+			System.out.println(count +" : check");
 			result=true;
 		}
 		return result;
